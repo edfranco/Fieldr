@@ -5,6 +5,7 @@ const userWall = document.getElementById('wall');
 const newPostForm = document.getElementById('new-post-form');
 const main = document.querySelector('main');
 const formBlock = document.getElementsByClassName('new-post-form-block');
+const form = document.querySelector('form');
 
 // State variables
 const comments = [];
@@ -92,7 +93,13 @@ const appendForm = event => {
     }
 }
 
-
+const errorMessage = target => {
+    target.insertAdjacentHTML('afterend', `
+        <div class="alert alert-${target.id}">
+            Please enter your ${target.name}
+        </div>
+    `)
+}
 // Event Listeners
 main.addEventListener('click', event => {
     if (event.target.tagName === 'BUTTON' && event.target.className === "comment-button") {
@@ -124,6 +131,22 @@ main.addEventListener('click', event => {
         appendForm(event);
     }
 }, false);
+
+document.addEventListener('blur', event => {
+    if (event.target.value === '') {
+        event.target.classList.add('empty-form');
+        errorMessage(event.target);
+    }
+}, true)
+
+// Clear Form Errors on Focus
+document.addEventListener('focus', event => {
+    event.target.classList.remove('input-error');
+    const inputMessage = document.querySelector(`.alert-${event.target.id}`);
+    if (inputMessage) {
+        inputMessage.parentNode.removeChild(inputMessage);
+    }
+}, true)
 
 
 
