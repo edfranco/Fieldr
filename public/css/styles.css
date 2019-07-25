@@ -54,9 +54,7 @@ main{
    min-height: 60vh;
 }
 
-.forms{
-   border: 1px solid black;
-}
+
 
 .forms * {
    display: block;
@@ -70,6 +68,12 @@ main{
 .form-to-be-appended{
 position: relative;
 }
+
+.empty-form{
+    background-color: #f5c6cd;
+    border: 2px solid #721c24;
+}
+
 
 input{
    border-color: var(--main-color);
