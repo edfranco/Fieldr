@@ -1,7 +1,6 @@
 <nav>
-    <div class="headers">
-        <h1>Fieldr</h1>
-        <h3>Find Your Field</h4>
+    <div class="header nav-link">
+        <a href="/">Fieldr</a>
     </div>
 
     <% if (typeof currentUser !== 'undefined'){ %>
@@ -11,5 +10,6 @@
     <% }; %>
 
 </nav>
+<div class="pseudo-nav"></div>
 <% include ./_messages.ejs %>
 <main>
