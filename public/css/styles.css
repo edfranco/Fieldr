@@ -6,47 +6,108 @@
 }
 
 * {
-    font-family: 'Montserrat', sans-serif;
+   font-family: var(--mainFont);
    box-sizing: border-box;
+   color: var(--black);
 }
 
-/* Removes default margin and padding in browsers */
-body{
+*:focus{
+   outline: none;
+}
+
+/* BODY AND MAIN */
+body {
    margin: 0;
    padding: 0;
    position: relative;
    overscroll-behavior: none;
+   min-height: 100vh;
 }
-/* Styles the top third of the page */
-nav{
-   background-color: var(--main-color);
+
+main{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding-bottom: 12em;
+   padding-top: 3em;
+   background-color: var(--white);
+}
+
+/* ALERT MESSAGES */
+.alert {
+   position: relative;
+   top: 3.5em;
+}
+
+.alert * {
+   font-weight: bold;
+   color: var(--red);
+   text-align: center;
+}
+
+/* NAV */
+nav {
    top: 0;
-   height: 20vh;
    display: flex;
    justify-content: space-between;
    align-items: flex-end;
-   box-shadow: 0 5px 20px 10px rgb(0,0,0,.2);
+   height: 4em;
+   position: relative;
+
 }
-nav .headers{
-   color: var(--secondary-color);
-   margin-left: 0.5em;
+nav::before {
+   content: '';
+   border: 5px solid var(--blue);
+   border-radius: 10px;
+   width: 97vw;
+   bottom: -1em;
+   left: 3vw;
+   position: absolute;
 }
-nav .headers h1{
+nav::after {
+   content: '';
+   border: 5px solid var(--green);
+   border-radius: 10px;
+   width: 95vw;
+   bottom: -2em;
+   right: 5vw;
+   position: absolute;
+}
+
+.pseudo-nav {
+   position: absolute;
+}
+
+.pseudo-nav::after {
+   content: '';
+   border: 5px solid var(--red);
+   border-radius: 10px;
+   bottom: -3em;
+   width: 80vw;
+   left: 20vw;
+   position: absolute;
+}
+
+nav .header * {
    font-size: 3em;
-   margin-bottom: 0;
+   font-family: var(--titleFont);
+   margin-left: 1em;
+   color: var(--black);
 }
-nav .headers h3{
-   font-size: 2em;
-   margin: 0;
+.user-links{
+   display: flex;
+   flex-direction: row;
 }
 nav a {
+   font-family: var(--titleFont);
    text-decoration: none;
    font-size: 2em;
-   color: var(--secondary-color);
+   color: black;
    margin-right: 1em;
 }
+
 nav a:hover{
-   color:white;
+   color: var(--red);
 }
 
 /* Alert for the errors */
@@ -58,19 +119,81 @@ nav a:hover{
 /* Styles what the main page should look like */
 main{
    display: flex;
-   justify-content: center;
-   min-height: 60vh;
+   flex-direction: column;
+   justify-content: flex-end;
+   align-items: center;
+   background-color: var(--black);
+   height: 12em;
+   text-align: center;
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   left: 0;
+}
+
+footer * {
+   color: var(--white);
+}
+
+.created-by {
+   font-size: 0.7em;
+   padding-bottom: 0.2em;
+}
+
+.footer-names {
+   font-family: var(--titleFont);
+   font-size: 1.4em;
+   padding-bottom: 0.3em;
+}
+
+.footer-emails {
+   font-size: 1em;
+   padding-top: 0.4em;
+}
+
+.footer-date {
+   padding-top: 1em;
+   padding-bottom: 2.5em;
+   font-size: 0.5em;
 }
 
 
+footer a{
+  padding: 0.2em;
+  text-decoration: none;
+  font-size: 2em;
+}
 
-.forms * {
+footer a .eduardo{
+   color:pink;
+}
+
+footer .fab:hover{
+  color: var(--red);
+}
+
+.icon{
+   color: var(--white);
+}
+
+.eduardo{
+   color:pink;
+}
+
+/* FORMS */
+form * {
    display: block;
+}
+
+.login, .signup {
+   margin: 1.5em;
 }
 
 .form-title {
    font-weight: bold;
-
+   font-family: var(--titleFont);
+   text-align: center;
+   font-size: 2em;
 }
 
 .form-to-be-appended{
@@ -84,26 +207,41 @@ position: relative;
 
 
 input{
-   border-color: var(--main-color);
-   font-family: sans-serif;
-   height: 2em;
+   border-color: 2px solid #dddddd;
+   background-color: var(--white);
+   border-radius: 5px;
    width: 20em;
    font-size: 1em;
+   height: 2em;
+   margin: 5px 0;
+}
+
+input:focus {
+   outline: none;
 }
 
 button {
-   font-size: 1.5em;
-   height:7vh;
-   width:20vh;
+   color: var(--white);
+   background: none;
+   border: 4px solid var(--green);
+   background-color: var(--green);
+   font-weight: bold;
+   border-radius: 50px;
+   font-size: 1em;
+   padding: 0.8em;
+   font-family: var(--titleFont);
 }
-.description-container p {
-   font-size: 2em;
-   width: 60vw;
-   line-height: 1.7em;
+
+button:hover{
+   background-color: var(--white);
+   color: var(--green);
+   cursor: pointer;
 }
-.description-container .button-container{
-   display: flex;
-   justify-content: flex-end;
+
+.home-button-container button{
+   margin: 20px;
+   border: 4px solid var(--green);
+   background-color: var(--green);
 }
 button{
    background-color: var(--tertiary-color);
@@ -114,10 +252,49 @@ button{
    margin:1em;
    border-radius: 1em;
 }
-button:hover{
-   background-color:rgb(255, 255, 255);
-   cursor: pointer;
 
+#new-post-button {
+   border: 4px solid var(--blue);
+   background-color: var(--blue);
+   color: var(--white);
+}
+
+#new-post-button:hover {
+   background-color: var(--white);
+   color: var(--blue);
+   cursor: pointer;
+}
+
+.button-on#new-post-button {
+   border: 4px solid var(--red);
+   background-color: var(--red);
+   color: var(--white);
+}
+
+.button-on#new-post-button:hover {
+   background-color: var(--white);
+   color: var(--red);
+   cursor: pointer;
+}
+
+.post button{
+   margin: 20px;
+   border: 4px solid var(--white);
+   background-color: var(--white);
+   color: var(--green);
+}
+
+.post button:hover{
+   cursor: pointer;
+}
+
+.forms button {
+   margin: 2em auto 1em;
+   font-family: var(--titleFont);
+}
+
+.comment-button, .join-button {
+   margin: 10px auto 0!important;
 }
 
 .inputs{
@@ -125,178 +302,135 @@ button:hover{
    justify-content: space-between;
 }
 
+/* INDEX PAGE */
 
-/* Bottom footer styles */
-footer{
-   background-color: black;
-   height: 20vh;
+.description-container {
+   width: 80vw;
+   min-width: 500px;
    display: flex;
+   flex-direction: column;
    justify-content: center;
    align-items: center;
+   margin-top: 2em;
 }
 
-footer a{
-   color:whitesmoke;
-   padding:1em;
-   text-decoration: none;
+.home-title {
+   font-size: 8em;
+   font-family: var(--titleFont);
+   color: var(--black);
 }
 
-footer a:hover{
-   color:gray;
-}
-/* MAIN page styling */
-.hello {
+.home-description {
    font-size: 2em;
-   font-weight: bold;
+   text-align: center;
+   margin: 0 2em;
 }
 
+.home-tagline {
+   margin-top: .5em;
+   font-size: 2em;
+   font-family: var(--titleFont);
+}
 
-/* POSTS Styling */
-#wall {
+.home-button-container {
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+}
+
+.home-button-container * {
+   font-family: var(--titleFont);
+}
+
+/* HOME AND PROFILE PAGE */
+
+
+.wall {
+   margin-top: 1em;
+   width: 100vw;
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
-   align-items: flex-start;
+   align-content: flex-start;
+   align-items: center;
 }
 
-.post {
-   border: 1px solid black;
-   margin: 1em;
-   max-width: 16em;
+.home-button-container * {
+   font-family: var(--titleFont);
 }
 
-.post-header {
-   position: relative;
+.submit-btn-container{
+   display: flex;
+   justify-content: center;
 }
 
-.post-header .sport-name{
-   font-size: 1.8em;
+.submit-btn{
+   color: var(--white)!important;
+   background: none;
+   border: 4px solid var(--green);
+   background: var(--green);
    font-weight: bold;
-   margin-bottom: 0.3em;
-   max-width: 12em;
-   padding: 0.2em;
+   color: var(--green);
+   border-radius: 50px;
+   font-size: 1em;
+   color: black;
+   padding: 0.8em;
+   font-family: var(--titleFont);
+   width: auto;
+   height: auto;
 }
 
-.post .host-name, .location{
-   font-size: 1.2em;
-}
-
-
-.descr {
-   margin-top: 0.5em;
-   margin-bottom: 1em;
-}
-
-.descr-title{
-   font-weight: bold;
-}
-
-.delete-button {
-   position: absolute;
-   top: 0;
-   right: 0;
-   margin-bottom: 1em;
-   width: 1em;
-   padding-right:1.5em;
-   padding-top: 0.5em;
-}
-
-.delete-button:hover{
+.submit-btn:hover{
+   background-color: var(--white);
+   color: var(--green)!important;
    cursor: pointer;
 }
 
-.comments {
-   border: 1px solid black;
-   font-size: 0.8em;
-}
-
-.comment-form input {
-   font-size: 1em;
-   width: 100%;
-}
-
-.spacer-container{
+.intro-container {
+   margin-top: 1em;
    display: flex;
-   justify-content: space-between;
+   flex-direction: row;
+   position: relative;
 }
 
-.comments-title {
-   font-weight: bold;
+.intro-container::after{
+   content: '';
+   border: 5px solid var(--black);
+   border-radius: 10px;
+   width: 95vw;
+   bottom: -2em;
+   right: 2.5vw;
+   position: absolute;
 }
-/* Users Wall */
-.wall{
+
+.profile-container {
+   width: 50vw;
    display: flex;
    flex-direction: column;
-}
-.card{
-   height:50vh;
-   width: 60vh;
-   /* overflow: hidden; */
-}
-.card .sport{
-   font-size: 2em;
-   background-color: whitesmoke;
-}
-.card .descr{
-   height: 100%;
-   padding-left: .5em;
-   padding-top:.2em;
-   border: 1px solid black;
-   background-color: antiquewhite;
-}
-.card .descr h1{
-   margin:0;
-}
-/* Comments style */
-.comments-user{
-   margin: 0;
-}
-.comment-field{
-   width: 60vh;
-}
-.inputs{
-   display: flex;
-   justify-content: space-between;
-}
-/* Bottom footer styles */
-footer{
-   background-color: black;
-   height: 20vh;
-   display: flex;
    justify-content: center;
-   align-items: center;
-}
-footer a{
-   color:whitesmoke;
-   padding:1em;
-   text-decoration: none;
-}
-footer a:hover{
-   color:gray;
 }
 
-form * {
-   display: block;
-}
-.form label{
-   font-size: 1.5em;
-}
-
-input{
-   border-color: var(--main-color);
-   font-family: sans-serif;
-   font-size: 1.5em;
-   height:7vh;
-   width:50vh;
-}
-.description-container p {
-   font-size: 2em;
-   width: 60vw;
-   line-height: 1.7em;
-}
-.description-container .button-container{
+.new-post-container {
+   width: 50vw;
    display: flex;
-   justify-content: flex-end;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   position: relative;
+}
+
+.new-post-container::before {
+   content: '';
+   border: 5px solid var(--black);
+   border-radius: 10px;
+   bottom: -2em;
+   top: -0.5em;
+   left: 0;
+   position: absolute;
+}
+
+.past-events {
+   position: relative;
 }
 button{
    background-color: var(--tertiary-color);
@@ -312,46 +446,64 @@ button:hover{
    color:black;
    cursor: pointer;
 }
-/* Users Wall */
-.wall{
-   display: flex;
-   flex-direction: column;
-}
-.card{
-   height:50vh;
-   width: 60vh;
-   /* overflow: hidden; */
-}
-.card .sport{
-   font-size: 2em;
-   background-color: whitesmoke;
-}
-.card .descr{
-   height: 100%;
-   padding-left: .5em;
-   padding-top:.2em;
-   border: 1px solid black;
-   background-color: antiquewhite;
-}
-.card .descr h1{
-   margin:0;
-}
-/* Comments style */
-.comments-user{
-   margin: 0;
-}
-.comment-field{
-   width: 60vh;
-}
-.inputs{
-   display: flex;
-   justify-content: space-between;
+
+.profile-info{
+   margin-left: 2em;
 }
 
-/* User Profile */
-.profile-page{
-    display: grid;
-    grid-template-columns: 1fr 4fr; 
+.profile-info-bold {
+   font-family: var(--titleFont);
+}
+
+.wall-title {
+   margin-top: 1em;
+   margin-bottom: 0.25em;
+   font-size: 2em;
+   margin-left: 2em;
+   margin-top: 1.5em;
+   font-family: var(--titleFont);
+   color: var(--blue);
+}
+
+
+/* POSTS*/
+
+.post {
+   border: 5px solid var(--green);
+   background: var(--green);
+   border-radius: 40px;
+   width: 18em;
+   padding: 1em;
+   margin-bottom: 2em;
+   margin: 0 1em 2em;
+}
+
+.post-header {
+   position: relative;
+}
+
+.sport-name{
+   font-size: 1.8em;
+   font-weight: bold;
+   text-align: center;
+   font-family: var(--titleFont);
+   padding: 0 1em 0.2em;
+   color: var(--white);
+}
+
+.post-date, .location, .host-name, .joins{
+   font-size: 1.2em;
+   color: var(--white);
+}
+
+
+.joins{
+   font-family: var(--titleFont);
+}
+
+.descr {
+   margin-top: 0.25em;
+   margin-bottom: 1em;
 }
 
 .user-profile{
@@ -361,9 +513,11 @@ button:hover{
     padding: 1em;
 }
 
-.user-profile img{
-    height:20vh;
-    width:10vw;
+.delete-button {
+   position: absolute;
+   top: 0;
+   right: 0;
+   font-size: 1.3em;
 }
 
 .grid-center{
@@ -391,24 +545,34 @@ footer h5, footer h3, footer h4{
    margin: 0;
 }
 
-footer .jackson{
-    display: inline;
-}
-footer a{
-   color:whitesmoke;
-   padding:1em;
-   text-decoration: none;
-}
-footer a:hover{
-   color:gray;
+.comments {
+   font-size: 0.8em;
+   margin-top: 2em;
+   position: relative;
 }
 
-.eduardo{
-    color:pink;
+.comments::before{
+   content: '';
+   border: 2px solid var(--white);
+   border-radius: 10px;
+   width: 19em;
+   top: -1em;
+   position: absolute;
 }
 
-.icon{
-    font-size: 2em;
+.comment-form input {
+   font-size: 1em;
+   width: 100%;
+}
+
+
+.spacer-container{
+   display: flex;
+   justify-content: space-between;
+}
+
+.comment-author {
+   font-family: var(--titleFont);
 }
 
 @media only screen and (max-width: 768px) {
